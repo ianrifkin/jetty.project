@@ -39,6 +39,17 @@ public interface Callback extends Invocable
         }
     };
 
+    default void completeWith(CompletableFuture<?> cf)
+    {
+        cf.whenComplete((o, x) ->
+        {
+            if (x == null)
+                succeeded();
+            else
+                failed(x);
+        });
+    }
+
     /**
      * <p>Callback invoked when the operation completes.</p>
      *
