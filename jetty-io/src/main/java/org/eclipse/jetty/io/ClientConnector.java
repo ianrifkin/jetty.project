@@ -27,9 +27,9 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.SocketChannel;
 import java.nio.file.Path;
 import java.time.Duration;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executor;
 
 import org.eclipse.jetty.util.IO;
@@ -400,7 +400,7 @@ public class ClientConnector extends ContainerLifeCycle
         try
         {
             if (context == null)
-                context = new HashMap<>();
+                context = new ConcurrentHashMap<>();
             context.put(ClientConnector.CLIENT_CONNECTOR_CONTEXT_KEY, this);
             context.putIfAbsent(REMOTE_SOCKET_ADDRESS_CONTEXT_KEY, address);
 
