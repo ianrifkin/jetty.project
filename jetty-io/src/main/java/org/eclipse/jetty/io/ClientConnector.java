@@ -77,6 +77,7 @@ public class ClientConnector extends ContainerLifeCycle
     public static final String REMOTE_SOCKET_ADDRESS_CONTEXT_KEY = CLIENT_CONNECTOR_CONTEXT_KEY + ".remoteSocketAddress";
     public static final String CLIENT_CONNECTION_FACTORY_CONTEXT_KEY = CLIENT_CONNECTOR_CONTEXT_KEY + ".clientConnectionFactory";
     public static final String CONNECTION_PROMISE_CONTEXT_KEY = CLIENT_CONNECTOR_CONTEXT_KEY + ".connectionPromise";
+    public static final String APPLICATION_PROTOCOLS_CONTEXT_KEY = CLIENT_CONNECTOR_CONTEXT_KEY + ".applicationProtocols";
     private static final Logger LOG = LoggerFactory.getLogger(ClientConnector.class);
 
     /**
@@ -510,8 +511,8 @@ public class ClientConnector extends ContainerLifeCycle
         }
         catch (Throwable x)
         {
-            if (LOG.isDebugEnabled())
-                LOG.debug("Could not configure {} to {} on {}", option, value, channel, x);
+            if (LOG.isTraceEnabled())
+                LOG.trace("Could not configure {} to {} on {}", option, value, channel, x);
         }
     }
 
