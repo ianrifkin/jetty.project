@@ -566,6 +566,8 @@ public class ClientConnector extends ContainerLifeCycle
         public void connectionOpened(Connection connection, Object context)
         {
             super.connectionOpened(connection, context);
+            // TODO: the block below should be moved to Connection.onOpen() in each implementation,
+            //  so that each implementation can decide when to notify the promise, possibly not in onOpen().
             @SuppressWarnings("unchecked")
             Map<String, Object> contextMap = (Map<String, Object>)context;
             @SuppressWarnings("unchecked")
