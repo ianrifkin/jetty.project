@@ -14,7 +14,6 @@
 package org.eclipse.jetty.io;
 
 import java.io.IOException;
-import java.net.Socket;
 import java.net.SocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
@@ -63,9 +62,7 @@ public class SocketChannelEndPoint extends SelectableChannelEndPoint
     {
         try
         {
-            Socket socket = getChannel().socket();
-            if (!socket.isOutputShutdown())
-                socket.shutdownOutput();
+            getChannel().shutdownOutput();
         }
         catch (Throwable x)
         {
